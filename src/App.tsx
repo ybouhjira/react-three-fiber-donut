@@ -17,7 +17,7 @@ function App() {
       <Canvas shadows camera={{ position: [0, 5, 5] }}>
         <color attach="background" args={["goldenrod"]} />
         <Environment preset="city" />
-        <Donut scale={[10, 10, 10]} position={[0, 0, 0]} rotation={[0, 0, 0]} />
+        <Donut scale={[1, 1, 1]} position={[0, 0.4, 0]} rotation={[0, 0, 0]} />
         <AccumulativeShadows
           temporal
           frames={100}
@@ -38,8 +38,6 @@ function App() {
         <OrbitControls
           enablePan={false}
           enableZoom={false}
-          panSpeed={0.5}
-          maxAzimuthAngle={Math.PI / 4}
         />
       </Canvas>
     </div>
@@ -75,9 +73,11 @@ function Donut(props: MeshProps) {
     });
 
     console.log(materials);
-    applyProps(materials.SprinklesMaterial, {
-      color: "orange",
-    });
+    if (materials.SprinklesMaterial) {
+      applyProps(materials.SprinklesMaterial, {
+        color: "orange",
+      });
+    }
   });
   return <primitive object={scene} {...props} />;
 }
