@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
-      <Canvas shadows camera={{ position: [0, 5, 5] }}>
+      <Canvas shadows camera={{ position: [0, 0, 1] }}>
         <color attach="background" args={["goldenrod"]} />
         <Environment preset="city" />
         <Donut scale={[1, 1, 1]} position={[0, 0.4, 0]} rotation={[0, 0, 0]} />

@@ -4,15 +4,16 @@ import React from "react";
 import {Mesh} from "three";
 
 export function Donut(props: MeshProps) {
-    const {scene, materials} = useGLTF("/lighdonut.gltf") as any;
+    const {scene} = useGLTF("/lighdonut.gltf");
+
     React.useLayoutEffect(() => {
-        scene.traverse((obj: Mesh) => {
-            if (obj.isMesh) {
+        scene.traverse((obj) => {
+            if ((obj as Mesh).isMesh) {
                 obj.castShadow = true;
                 obj.receiveShadow = true;
             }
         });
     });
 
-    return <primitive object={scene} {...props} />;
+    return <primitive object={scene} {...props} position={[0, 0, 0]}/>
 }
